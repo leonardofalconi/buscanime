@@ -3,11 +3,12 @@ import { Header } from '../Header'
 import { Footer } from '../Footer'
 import { Main } from '../Main'
 import * as Styled from './styles'
+import { Theme } from '../../theme'
 
 export const AppContainer: FC<{ children: ReactNode }> = ({ children }) => {
   return (
     <Styled.Container>
-      <Header />
+      <Header backgroundColor={Theme.colors.grape} />
       <Main>{children}</Main>
       <Footer />
     </Styled.Container>

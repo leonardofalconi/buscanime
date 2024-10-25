@@ -1,33 +1,25 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { fn } from '@storybook/test'
 
-import { Header } from './Header'
+import { Header } from '../components/Header'
+import { Theme } from '../theme'
 
 const meta = {
-  title: 'Example/Header',
+  title: 'Contents/Header',
   component: Header,
-  // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
-  tags: ['autodocs'],
   parameters: {
-    // More on how to position stories at: https://storybook.js.org/docs/configure/story-layout
     layout: 'fullscreen',
   },
-  args: {
-    onLogin: fn(),
-    onLogout: fn(),
-    onCreateAccount: fn(),
+  tags: ['autodocs'],
+  argTypes: {
+    backgroundColor: { control: 'color' },
   },
 } satisfies Meta<typeof Header>
 
 export default meta
 type Story = StoryObj<typeof meta>
 
-export const LoggedIn: Story = {
+export const Default: Story = {
   args: {
-    user: {
-      name: 'Jane Doe',
-    },
+    backgroundColor: Theme.colors.grape,
   },
 }
-
-export const LoggedOut: Story = {}
