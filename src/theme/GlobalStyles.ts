@@ -39,6 +39,7 @@ const GlobalStyles = createGlobalStyle`
     h4,
     h5,
     h6,
+    p,
     figure,
     pre,
     dl,

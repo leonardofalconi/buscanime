@@ -10,7 +10,7 @@ export const AppContainer: FC<{ children: ReactNode }> = ({ children }) => {
     <Styled.Container>
       <Header backgroundColor={Theme.colors.grape} />
       <Main>{children}</Main>
-      <Footer />
+      <Footer backgroundColor={Theme.colors.grape} />
     </Styled.Container>
   )
 }
