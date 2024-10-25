@@ -5,6 +5,10 @@ import pluginReact from 'eslint-plugin-react'
 import eslintConfigPrettier from 'eslint-config-prettier'
 
 export default [
+  pluginJs.configs.recommended,
+  ...tseslint.configs.recommended,
+  pluginReact.configs.flat.recommended,
+  eslintConfigPrettier,
   {
     languageOptions: {
       ecmaVersion: 2024,
@@ -80,8 +84,4 @@ export default [
   {
     ignores: ['src/stories/*'],
   },
-  pluginJs.configs.recommended,
-  ...tseslint.configs.recommended,
-  pluginReact.configs.flat.recommended,
-  eslintConfigPrettier,
 ]
