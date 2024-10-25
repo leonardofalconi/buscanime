@@ -1,5 +1,4 @@
 import { render } from '../../tests'
-
 import { Main } from '.'
 
 const mockChildrenText = 'Children'

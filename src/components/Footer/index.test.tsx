@@ -1,5 +1,4 @@
 import { render, screen } from '../../tests'
-
 import { Footer } from '.'
 
 const mockBackgroundColor = '#000000'

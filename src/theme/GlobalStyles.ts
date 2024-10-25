@@ -106,6 +106,8 @@ const GlobalStyles = createGlobalStyle`
 
     button {
       cursor: pointer;
+      border: 0;
+      box-shadow: none;
     }
 
     button[disabled] {
