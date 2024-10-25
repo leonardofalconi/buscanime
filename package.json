@@ -12,13 +12,17 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "test:coverage": "react-scripts test a --coverage --watchAll=false",
     "eject": "react-scripts eject",
     "server": "npx serve build -p 3000 &",
     "cypress:cli": "yarn build && yarn server",
     "cypress": "yarn cypress:cli && cypress run",
     "cypress:open": "yarn start && cypress open --e2e",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "prepare": "husky",
+    "format": "prettier --write \"src/**/*.{ts,tsx}\"",
+    "lint": "eslint src/ --max-warnings 0 && tsc --noemit"
   },
   "browserslist": {
     "production": [
@@ -61,6 +65,7 @@
     "eslint-plugin-react": "^7.37.2",
     "eslint-plugin-storybook": "^0.10.1",
     "globals": "^15.11.0",
+    "husky": "^9.1.6",
     "prettier": "^3.3.3",
     "prop-types": "^15.8.1",
     "storybook": "^8.3.6",

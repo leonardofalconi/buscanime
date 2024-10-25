@@ -16,7 +16,7 @@ export default [
         ...globals.es2024,
       },
     },
-    files: ['**/*.{js,mjs,cjs,ts,jsx,tsx}'],
+    files: ['**/*.{ts,tsx}'],
     settings: {
       react: {
         version: 'detect',
