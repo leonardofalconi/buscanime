@@ -4,6 +4,9 @@ export const Theme = {
     white: '#FFFFFF',
     selectiveYellow: '#FFB800',
     lavenderGray: '#C4CAD4',
+    platinum: '#E2E5E9',
+    persianGreen: '#01ADA6',
+    crayola: '#E92151',
   },
   typography: {
     fontMulish: {
