@@ -15,6 +15,8 @@ export const Content = styled.div`
   position: relative;
   z-index: 2;
   justify-content: space-between;
+  width: 100%;
+  height: 100%;
   padding: 1.4rem;
   gap: 0.5rem;
 `
