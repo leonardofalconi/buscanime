@@ -5,7 +5,7 @@ export const Button = styled.button<TButtonStyled>`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0.25rem;
+  padding: 0.25rem 0.85rem;
   background-color: ${({ $background }) => $background};
   width: ${({ $width }) => $width};
   height: ${({ $height }) => $height};
