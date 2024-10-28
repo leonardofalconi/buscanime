@@ -12,6 +12,7 @@ export const Container = styled.div<TFooterStyledContainer>`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  width: 100%;
   background-color: ${({ $background }) => $background};
   padding: 0.5rem 0;
   gap: 0.5rem 0;
