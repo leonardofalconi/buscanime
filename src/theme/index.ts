@@ -3,6 +3,7 @@ export const Theme = {
     grape: '#6324C6',
     white: '#FFFFFF',
     selectiveYellow: '#FFB800',
+    lavenderGray: '#C4CAD4',
   },
   typography: {
     fontMulish: {
