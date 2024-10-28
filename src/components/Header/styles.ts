@@ -5,6 +5,7 @@ export const Container = styled.div<THeaderStyledContainer>`
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 100%;
   background-color: ${({ $background }) => $background};
   padding: 1rem 0;
 `
