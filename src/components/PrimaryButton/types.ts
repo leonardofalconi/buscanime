@@ -10,6 +10,7 @@ export interface IPrimaryButtonProps {
   children: ReactNode
   width: string
   height: string
+  borderRadius?: string
   onClick: () => void
 }
 
@@ -20,4 +21,5 @@ export type TButtonStyled = {
   $background: IPrimaryButtonProps['backgroundColor']
   $width: IPrimaryButtonProps['width']
   $height: IPrimaryButtonProps['height']
+  $borderRadius: string
 }

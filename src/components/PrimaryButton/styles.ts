@@ -13,7 +13,7 @@ export const Button = styled.button<TButtonStyled>`
   font-size: ${({ $size }) => $size};
   line-height: ${({ $size }) => $size};
   text-align: center;
-  border-radius: 4px;
+  border-radius: ${({ $borderRadius }) => $borderRadius};
   border: 1px solid transparent;
 
   transition:

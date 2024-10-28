@@ -38,3 +38,19 @@ export const Outline: Story = {
     height: '1.5rem',
   },
 }
+
+export const Pagination: Story = {
+  args: {
+    backgroundColor: Theme.colors.selectiveYellow,
+    textColor: Theme.colors.white,
+    children: (
+      <p>
+        <span style={{ fontSize: '1.5rem', marginRight: '1rem' }}>+</span>Ver mais
+      </p>
+    ),
+    width: '100%',
+    height: '2.4rem',
+    fontSize: '1rem',
+    borderRadius: '8px',
+  },
+}

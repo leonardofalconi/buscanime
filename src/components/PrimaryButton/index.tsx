@@ -10,6 +10,7 @@ export const PrimaryButton: FC<IPrimaryButtonProps> = ({
   textColor,
   backgroundColor,
   fontSize,
+  borderRadius = '4px',
   children,
   onClick,
 }) => {
@@ -22,6 +23,7 @@ export const PrimaryButton: FC<IPrimaryButtonProps> = ({
       $width={width}
       $height={height}
       $size={fontSize}
+      $borderRadius={borderRadius}
       onClick={onClick}
     >
       {children}

@@ -31,6 +31,7 @@ describe('PrimaryButton component', () => {
       height: mockDefaultProps.height,
       width: mockDefaultProps.width,
       color: mockDefaultProps.textColor,
+      borderRadius: '4px',
     })
 
     expect(buttonContainerElement).toHaveTextContent(mockButtonLabel)
@@ -88,5 +89,15 @@ describe('PrimaryButton component', () => {
     fireEvent.click(buttonContainerElement)
 
     expect(mockDefaultProps.onClick).toBeCalledTimes(1)
+  })
+
+  test('render custom border radius', () => {
+    render(<PrimaryButton {...mockDefaultProps} borderRadius="8px" />)
+
+    const buttonContainerElement = screen.getByTestId('test-primary-button')
+
+    expect(buttonContainerElement).toHaveStyle({
+      borderRadius: '8px',
+    })
   })
 })
