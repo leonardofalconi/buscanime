@@ -25,11 +25,11 @@ export const Theme = {
   },
   media: {
     mobile: {
-      size: '10px',
+      size: '15px',
     },
     tablet: {
       query: '@media (min-width: 768px)',
-      size: '15px',
+      size: '18px',
     },
     HD: {
       query: '@media (min-width: 1280px)',
@@ -37,15 +37,7 @@ export const Theme = {
     },
     fullHD: {
       query: '@media (min-width: 1920px)',
-      size: '30px',
-    },
-    '2k': {
-      query: '@media (min-width: 2560px)',
-      size: '40px',
-    },
-    '4k': {
-      query: '@media (min-width: 3840px)',
-      size: '60px',
+      size: '23px',
     },
   },
 }

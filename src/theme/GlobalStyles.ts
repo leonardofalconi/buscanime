@@ -16,14 +16,6 @@ const GlobalStyles = createGlobalStyle`
       font-size: ${props => props.theme.media.fullHD.size}
     }
 
-    ${props => props.theme.media['2k'].query} {
-      font-size: ${props => props.theme.media['2k'].size}
-    }
-
-    ${props => props.theme.media['4k'].query} {
-      font-size: ${props => props.theme.media['4k'].size}
-    }
-
     *::selection {
       background: transparent;
     }
