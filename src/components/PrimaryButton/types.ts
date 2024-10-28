@@ -11,7 +11,7 @@ export interface IPrimaryButtonProps {
   width: string
   height: string
   borderRadius?: string
-  onClick: () => void
+  onClick?: () => void
 }
 
 export type TButtonStyled = {
