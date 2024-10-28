@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react'
-
 import { Header } from '../components/Header'
 import { Theme } from '../theme'
 
