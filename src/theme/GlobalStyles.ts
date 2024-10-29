@@ -2,6 +2,9 @@ import { createGlobalStyle } from 'styled-components'
 
 const GlobalStyles = createGlobalStyle`
   html, body{
+    height: 100%;
+    margin: 0;
+
     font-size: ${props => props.theme.media.mobile.size};
 
     ${props => props.theme.media.tablet.query} {
@@ -23,6 +26,10 @@ const GlobalStyles = createGlobalStyle`
     * {
       box-sizing: border-box;
       font-family: ${props => props.theme.typography.fontMulish.family};
+    }
+
+    #root{
+      height: 100%;
     }
 
     h1,

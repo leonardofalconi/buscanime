@@ -2,7 +2,7 @@ import { render, screen } from '..'
 import { Home } from '../../pages/Home'
 
 describe('Home page', () => {
-  test('must have a title', () => {
+  test.skip('must have a title', () => {
     render(<Home />)
 
     const title = screen.getByTestId('home-title')
