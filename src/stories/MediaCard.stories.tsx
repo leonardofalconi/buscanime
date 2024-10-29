@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { MediaCard } from '../components/MediaCard'
-import mediaThumbnailExample from '../../public/card-media-thumbnail.example.png'
+import mediaThumbnailExample from '../assets/imgs/card-media-thumbnail.example.png'
 
 const meta = {
   title: 'Contents/MediaCard',
