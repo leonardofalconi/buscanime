@@ -6,10 +6,7 @@ import { Theme } from '../../theme'
 import { getMediaAverageScoreTagColor } from '../../utils/getMediaAverageScoreTagColor'
 
 export const MediaCard: FC<IMediaCardProps> = ({ averageScore, categoryTags, thumbnail, title }) => {
-  const tagAverageScoreColor = useMemo(
-    () => getMediaAverageScoreTagColor({ averageScore: averageScore }),
-    [averageScore],
-  )
+  const tagAverageScoreColor = useMemo(() => getMediaAverageScoreTagColor({ averageScore }), [averageScore])
 
   return (
     <Styled.Container>
