@@ -11,6 +11,7 @@ export interface IPrimaryButtonProps {
   width: string
   height: string
   borderRadius?: string
+  disabled?: boolean
   onClick?: () => void
 }
 

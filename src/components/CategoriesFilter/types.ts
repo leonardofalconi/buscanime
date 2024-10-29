@@ -15,4 +15,5 @@ export interface ICategoriesFilterProps {
   categories: TCategoriesFilterItem[]
   onChange: (params: TCategoriesFilterOnChangeParams) => void
   value: TCategoriesFilterNames
+  disabled?: boolean
 }

@@ -2,7 +2,7 @@ import { IInputProps } from './types'
 import { FC } from 'react'
 import * as Styled from './styles'
 
-export const Input: FC<IInputProps> = ({ name, placeholder, type = 'text', value, onChange }) => (
+export const Input: FC<IInputProps> = ({ name, placeholder, type = 'text', value, onChange, disabled }) => (
   <Styled.Input
     data-testid={`test-input-${type}`}
     name={name}
@@ -10,5 +10,6 @@ export const Input: FC<IInputProps> = ({ name, placeholder, type = 'text', value
     placeholder={placeholder}
     value={value}
     onChange={onChange}
+    disabled={disabled}
   />
 )

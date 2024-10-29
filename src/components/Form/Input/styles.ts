@@ -8,6 +8,11 @@ export const Input = styled.input`
   border-radius: 4px;
   font-size: 0.7rem;
 
+  &:disabled {
+    opacity: 0.5;
+    background-color: transparent;
+  }
+
   &::placeholder {
     font-size: 0.7rem;
     color: ${({ theme }) => theme.colors.lavenderGray};

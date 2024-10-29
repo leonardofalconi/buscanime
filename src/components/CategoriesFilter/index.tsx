@@ -4,7 +4,7 @@ import * as Styled from './styles'
 import { PrimaryButton } from '../PrimaryButton'
 import { Theme } from '../../theme'
 
-export const CategoriesFilter: FC<ICategoriesFilterProps> = ({ categories, onChange, value }) => {
+export const CategoriesFilter: FC<ICategoriesFilterProps> = ({ categories, onChange, value, disabled }) => {
   const categoryOnSelected = (params: TCategoriesFilterItem) => onChange({ name: params.name })
 
   return (
@@ -20,6 +20,7 @@ export const CategoriesFilter: FC<ICategoriesFilterProps> = ({ categories, onCha
           height="1.5rem"
           borderRadius="4px"
           onClick={() => categoryOnSelected(category)}
+          disabled={disabled}
         >
           {category.label}
         </PrimaryButton>

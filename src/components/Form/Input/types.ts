@@ -6,4 +6,5 @@ export interface IInputProps {
   value?: string
   type?: TInputType
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void
+  disabled?: boolean
 }

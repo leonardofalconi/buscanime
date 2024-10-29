@@ -11,6 +11,7 @@ export const PrimaryButton: FC<IPrimaryButtonProps> = ({
   backgroundColor,
   fontSize,
   borderRadius = '4px',
+  disabled,
   children,
   onClick,
 }) => {
@@ -25,6 +26,7 @@ export const PrimaryButton: FC<IPrimaryButtonProps> = ({
       $size={fontSize}
       $borderRadius={borderRadius}
       onClick={onClick}
+      disabled={disabled}
     >
       {children}
     </Styled.Button>

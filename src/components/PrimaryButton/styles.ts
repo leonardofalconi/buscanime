@@ -16,6 +16,10 @@ export const Button = styled.button<TButtonStyled>`
   border-radius: ${({ $borderRadius }) => $borderRadius};
   border: 1px solid transparent;
 
+  &:disabled {
+    opacity: 0.3;
+  }
+
   transition:
     background-color,
     color,
