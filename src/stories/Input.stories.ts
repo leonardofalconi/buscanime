@@ -6,7 +6,7 @@ const meta = {
   title: 'Components/Form/Input',
   component: Input,
   parameters: {
-    layout: 'center',
+    layout: 'padded',
   },
   tags: ['autodocs'],
   argTypes: {

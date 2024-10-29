@@ -6,7 +6,7 @@ const meta = {
   title: 'Components/Tag',
   component: Tag,
   parameters: {
-    layout: 'center',
+    layout: 'padded',
   },
   tags: ['autodocs'],
   argTypes: {

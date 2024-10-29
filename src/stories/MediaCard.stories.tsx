@@ -6,7 +6,7 @@ const meta = {
   title: 'Contents/MediaCard',
   component: MediaCard,
   parameters: {
-    layout: 'center',
+    layout: 'padded',
   },
   tags: ['autodocs'],
   argTypes: {

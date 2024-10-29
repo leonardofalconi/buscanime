@@ -7,7 +7,7 @@ const meta = {
   title: 'Components/PrimaryButton',
   component: PrimaryButton,
   parameters: {
-    layout: 'center',
+    layout: 'padded',
   },
   tags: ['autodocs'],
   argTypes: {

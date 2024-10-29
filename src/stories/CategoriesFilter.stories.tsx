@@ -36,7 +36,7 @@ const meta = {
   title: 'Contents/CategoriesFilter',
   component: CategoriesFilterComponent,
   parameters: {
-    layout: 'center',
+    layout: 'padded',
   },
 } satisfies Meta<typeof CategoriesFilterComponent>
 
