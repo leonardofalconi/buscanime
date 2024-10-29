@@ -9,7 +9,7 @@ import {
   TUseMediasCurrentPagination,
 } from './types'
 import { INITIAL_STATES } from './constants'
-import { useCallback, useState } from 'react'
+import { useCallback, useMemo, useState } from 'react'
 import { IMedia } from '../../entities/media'
 
 export const useMedias = (): IUseMediasReturn => {
@@ -26,7 +26,12 @@ export const useMedias = (): IUseMediasReturn => {
     perPage: INITIAL_STATES.perPage,
   })
 
-  const getPage = useCallback(async (params: TUseMediasGetMediasNextPageParams) => {
+  const hasNextPage = useMemo(
+    () => data?.Page.media.length === INITIAL_STATES.perPage * mediasCurrentPagination.page,
+    [data, mediasCurrentPagination],
+  )
+
+  const getNextPage = useCallback(async (params: TUseMediasGetMediasNextPageParams) => {
     await fetchMore({
       variables: { ...params },
       updateQuery(previousData, { fetchMoreResult }) {
@@ -57,10 +62,10 @@ export const useMedias = (): IUseMediasReturn => {
     mediasPaginationLoading: networkStatus === NetworkStatus.fetchMore,
     mediasError: error,
     mediasCalled: called,
-    mediasCurrentPagination,
+    mediasCurrentPagination: { ...mediasCurrentPagination, hasNextPage },
     mediasCurrentFilters: { category: variables?.format, title: variables?.search },
     medias: data?.Page.media ? getFormattedMedias(data?.Page.media) : [],
-    getMediasPage: getPage,
+    getMediasNextPage: getNextPage,
     setMediasFilters: setFilters,
   }
 }

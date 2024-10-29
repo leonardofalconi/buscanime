@@ -28,9 +28,9 @@ export interface IUseMediasReturn {
   mediasPaginationLoading: boolean
   mediasError?: ApolloError
   mediasCalled: boolean
-  mediasCurrentPagination: { page: number; perPage: number }
+  mediasCurrentPagination: { page: number; perPage: number; hasNextPage: boolean }
   mediasCurrentFilters: { category?: TCategoriesNames; title?: string }
   medias?: IMedia[]
-  getMediasPage: (params: TUseMediasGetMediasNextPageParams) => void
+  getMediasNextPage: (params: TUseMediasGetMediasNextPageParams) => void
   setMediasFilters: (params: TUseMediasSetMediasFiltersParams) => void
 }
