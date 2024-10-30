@@ -1,5 +1,5 @@
 yarn format
 yarn lint
 yarn test:coverage
-yarn build-storybook
+yarn storybook:build
 yarn cypress

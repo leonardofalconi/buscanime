@@ -21,7 +21,8 @@
     "cypress": "yarn cypress:cli && cypress run",
     "cypress:open": "yarn start && cypress open --e2e",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build",
+    "storybook:build": "storybook build",
+    "storybook:run": "npx serve storybook-static -p 6006",
     "prepare": "husky",
     "format": "prettier --write \"src/**/*.{ts,tsx}\"",
     "lint": "eslint src/ --max-warnings 0 && tsc --noemit"
