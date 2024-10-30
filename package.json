@@ -10,6 +10,9 @@
     "react-scripts": "^5.0.1",
     "styled-components": "^6.1.13"
   },
+  "jest": {
+    "coveragePathIgnorePatterns": ["src/stories/*", "src/theme/*", "src/graphql/*", "src/index.tsx", "src/entities/*", "src/tests/*"]
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
