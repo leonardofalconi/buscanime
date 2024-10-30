@@ -8,11 +8,10 @@ import {
   TUseMediasGetMediasNextPageParams,
   TUseMediasCurrentPagination,
 } from './types'
-import { INITIAL_STATES } from './constants'
 import { useCallback, useMemo, useState } from 'react'
 import { IMedia } from '../../entities/media'
 
-export const useMedias = (): IUseMediasReturn => {
+export const useMedias = (INITIAL_STATES: TMediasQueryFilters): IUseMediasReturn => {
   const { loading, error, data, called, fetchMore, refetch, variables, networkStatus } = useQuery<
     TMediasQueryData,
     TMediasQueryFilters
