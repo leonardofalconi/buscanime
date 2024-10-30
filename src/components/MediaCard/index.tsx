@@ -1,11 +1,11 @@
-import { FC, useMemo } from 'react'
+import { FC, memo, useMemo } from 'react'
 import * as Styled from './styles'
 import { IMediaCardProps } from './types'
 import { Tag } from '../Tag'
 import { Theme } from '../../theme'
 import { getMediaAverageScoreTagColor } from '../../utils/getMediaAverageScoreTagColor'
 
-export const MediaCard: FC<IMediaCardProps> = ({ averageScore, categoryTags, thumbnail, title }) => {
+const Component: FC<IMediaCardProps> = ({ averageScore, categoryTags, thumbnail, title }) => {
   const tagAverageScoreColor = useMemo(() => getMediaAverageScoreTagColor({ averageScore }), [averageScore])
 
   return (
@@ -30,3 +30,5 @@ export const MediaCard: FC<IMediaCardProps> = ({ averageScore, categoryTags, thu
     </Styled.Container>
   )
 }
+
+export const MediaCard = memo(Component)

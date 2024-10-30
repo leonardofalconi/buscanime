@@ -1,8 +1,8 @@
 import { IInputProps } from './types'
-import { FC } from 'react'
+import { FC, memo } from 'react'
 import * as Styled from './styles'
 
-export const Input: FC<IInputProps> = ({ name, placeholder, type = 'text', value, onChange, disabled }) => (
+const Component: FC<IInputProps> = ({ name, placeholder, type = 'text', value, onChange, disabled }) => (
   <Styled.Input
     data-testid={`test-input-${type}`}
     name={name}
@@ -13,3 +13,5 @@ export const Input: FC<IInputProps> = ({ name, placeholder, type = 'text', value
     disabled={disabled}
   />
 )
+
+export const Input = memo(Component)

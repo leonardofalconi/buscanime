@@ -1,9 +1,9 @@
-import { FC } from 'react'
+import { FC, memo } from 'react'
 import { IFormProps } from './types'
 
 import * as Styled from './styles'
 
-export const Form: FC<IFormProps> = ({ onSubmit, children }) => (
+const Component: FC<IFormProps> = ({ onSubmit, children }) => (
   <Styled.Form
     onSubmit={(e: React.FormEvent<HTMLFormElement>) => {
       e.preventDefault()
@@ -13,3 +13,5 @@ export const Form: FC<IFormProps> = ({ onSubmit, children }) => (
     {children}
   </Styled.Form>
 )
+
+export const Form = memo(Component)

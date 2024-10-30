@@ -1,6 +1,8 @@
-import { FC, ReactNode } from 'react'
+import { FC, memo, ReactNode } from 'react'
 import * as Styled from './styles'
 
-export const Main: FC<{ children: ReactNode }> = ({ children }) => {
+const Component: FC<{ children: ReactNode }> = ({ children }) => {
   return <Styled.Container>{children}</Styled.Container>
 }
+
+export const Main = memo(Component)

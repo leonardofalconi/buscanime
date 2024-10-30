@@ -1,8 +1,8 @@
-import { FC } from 'react'
+import { FC, memo } from 'react'
 import * as Styled from './styles'
 import { IHeaderProps } from './types'
 
-export const Header: FC<IHeaderProps> = ({ backgroundColor }) => {
+const Component: FC<IHeaderProps> = ({ backgroundColor }) => {
   return (
     <Styled.Container data-testid="test-header-container" $background={backgroundColor}>
       <Styled.Title data-testid="test-header-container-title">
@@ -11,3 +11,5 @@ export const Header: FC<IHeaderProps> = ({ backgroundColor }) => {
     </Styled.Container>
   )
 }
+
+export const Header = memo(Component)

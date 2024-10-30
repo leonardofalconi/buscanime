@@ -1,10 +1,10 @@
-import { FC } from 'react'
+import { FC, memo } from 'react'
 import { ICategoriesFilterProps, TCategoriesFilterItem } from './types'
 import * as Styled from './styles'
 import { PrimaryButton } from '../PrimaryButton'
 import { Theme } from '../../theme'
 
-export const CategoriesFilter: FC<ICategoriesFilterProps> = ({ categories, onChange, value, disabled }) => {
+const Component: FC<ICategoriesFilterProps> = ({ categories, onChange, value, disabled }) => {
   const categoryOnSelected = (params: TCategoriesFilterItem) => onChange({ name: params.name })
 
   return (
@@ -28,3 +28,5 @@ export const CategoriesFilter: FC<ICategoriesFilterProps> = ({ categories, onCha
     </Styled.Container>
   )
 }
+
+export const CategoriesFilter = memo(Component)

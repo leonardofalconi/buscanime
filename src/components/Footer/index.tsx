@@ -1,8 +1,8 @@
-import { FC } from 'react'
+import { FC, memo } from 'react'
 import * as Styled from './styles'
 import { IFooterProps } from './types'
 
-export const Footer: FC<IFooterProps> = ({ backgroundColor }) => {
+const Component: FC<IFooterProps> = ({ backgroundColor }) => {
   return (
     <Styled.Container data-testid="test-footer-container" $background={backgroundColor}>
       <Styled.Text data-testid="test-footer-container-text">
@@ -12,3 +12,5 @@ export const Footer: FC<IFooterProps> = ({ backgroundColor }) => {
     </Styled.Container>
   )
 }
+
+export const Footer = memo(Component)

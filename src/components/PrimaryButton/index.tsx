@@ -1,9 +1,9 @@
-import { FC } from 'react'
+import { FC, memo } from 'react'
 
 import { IPrimaryButtonProps } from './types'
 import * as Styled from './styles'
 
-export const PrimaryButton: FC<IPrimaryButtonProps> = ({
+const Component: FC<IPrimaryButtonProps> = ({
   type,
   width,
   height,
@@ -32,3 +32,5 @@ export const PrimaryButton: FC<IPrimaryButtonProps> = ({
     </Styled.Button>
   )
 }
+
+export const PrimaryButton = memo(Component)
