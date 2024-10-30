@@ -38,8 +38,7 @@ export const BoxCategories = styled.div`
 export const BoxAverageScore = styled.div`
   display: flex;
   align-self: flex-end;
-  margin-right: -1rem;
-  margin-bottom: -1rem;
+  margin: 1rem -1rem -1rem 0;
 `
 
 export const Thumbnail = styled.img`
