@@ -62,3 +62,31 @@ export const BoxSeeMoreButton = styled.div`
   display: flex;
   padding-top: 1.2rem;
 `
+
+export const LoadingDotsSvg = styled.img`
+  width: 3rem;
+  height: 100%;
+`
+
+export const LoadingWindowSvg = styled.img`
+  width: 5rem;
+  margin: 3rem auto 0 auto;
+`
+
+export const SeeMoreButtonText = styled.p`
+  display: flex;
+`
+
+export const SeeMoreButtonIcon = styled.span`
+  margin-right: 1rem;
+  font-size: 1.5rem;
+`
+
+export const NoMediaFoundText = styled.p`
+  margin-top: 3rem;
+  font-size: 1rem;
+  font-weight: ${({ theme }) => theme.typography.fontMulish.weight.bold};
+  line-height: 1.3rem;
+  color: ${({ theme }) => theme.colors.crayola};
+  text-align: center;
+`
