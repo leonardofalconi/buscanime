@@ -4,7 +4,7 @@ import { IUseHomeStatesProps, TOnCategoriesFilterChangeParams, TOnFormSearchSubm
 export const useHomeStates = (props: IUseHomeStatesProps) => {
   const isActionsDisable = useMemo(
     () => props.mediasPaginationLoading || props.mediasLoading,
-    [props.mediasPaginationLoading || props.mediasLoading],
+    [props.mediasLoading, props.mediasPaginationLoading],
   )
 
   const isPaginationButtonVisible = useMemo(
@@ -28,7 +28,7 @@ export const useHomeStates = (props: IUseHomeStatesProps) => {
 
       props.setMediasFilters({ format: categoryToFilter })
     },
-    [isActionsDisable, props.mediasCurrentFilters.category],
+    [isActionsDisable, props],
   )
 
   const onFormSearchSubmit = useCallback(
@@ -43,14 +43,14 @@ export const useHomeStates = (props: IUseHomeStatesProps) => {
 
       props.setMediasFilters({ search: inputSearchValue || undefined })
     },
-    [isActionsDisable, props.mediasCurrentFilters.title],
+    [isActionsDisable, props],
   )
 
   const onPaginationButtonClick = useCallback(() => {
     if (isActionsDisable) return
 
     props.getMediasNextPage({ page: props.mediasCurrentPagination.page + 1 })
-  }, [isActionsDisable, props.mediasCurrentPagination.page])
+  }, [isActionsDisable, props])
 
   return {
     isActionsDisable,

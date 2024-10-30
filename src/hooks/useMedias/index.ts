@@ -27,7 +27,7 @@ export const useMedias = (INITIAL_STATES: TMediasQueryFilters): IUseMediasReturn
 
   const hasNextPage = useMemo(
     () => data?.Page.media.length === INITIAL_STATES.perPage * mediasCurrentPagination.page,
-    [data, mediasCurrentPagination],
+    [INITIAL_STATES.perPage, data?.Page.media.length, mediasCurrentPagination.page],
   )
 
   const noMediaFound = useMemo(
@@ -35,26 +35,32 @@ export const useMedias = (INITIAL_STATES: TMediasQueryFilters): IUseMediasReturn
     [data?.Page.media, called, loading],
   )
 
-  const getNextPage = useCallback(async (params: TUseMediasGetMediasNextPageParams) => {
-    await fetchMore({
-      variables: { ...params },
-      updateQuery(previousData, { fetchMoreResult }) {
-        const previousMedias = previousData.Page.media.slice(0)
-        const currentMedias = fetchMoreResult.Page.media.slice(0)
-        const updatedMedias = [...previousMedias, ...currentMedias]
+  const getNextPage = useCallback(
+    async (params: TUseMediasGetMediasNextPageParams) => {
+      await fetchMore({
+        variables: { ...params },
+        updateQuery(previousData, { fetchMoreResult }) {
+          const previousMedias = previousData.Page.media.slice(0)
+          const currentMedias = fetchMoreResult.Page.media.slice(0)
+          const updatedMedias = [...previousMedias, ...currentMedias]
 
-        return { ...previousData, Page: { media: updatedMedias } }
-      },
-    })
+          return { ...previousData, Page: { media: updatedMedias } }
+        },
+      })
 
-    setMediasCurrentPagination(prevState => ({ ...prevState, ...params }))
-  }, [])
+      setMediasCurrentPagination(prevState => ({ ...prevState, ...params }))
+    },
+    [fetchMore],
+  )
 
-  const setFilters = useCallback(async (params: TUseMediasSetMediasFiltersParams) => {
-    await refetch(params)
+  const setFilters = useCallback(
+    async (params: TUseMediasSetMediasFiltersParams) => {
+      await refetch(params)
 
-    setMediasCurrentPagination(prevState => ({ ...prevState, page: 1 }))
-  }, [])
+      setMediasCurrentPagination(prevState => ({ ...prevState, page: 1 }))
+    },
+    [refetch],
+  )
 
   const getFormattedMedias = useCallback(
     (medias: IMedia[]): IMedia[] => medias.map(media => ({ ...media, averageScore: media.averageScore || 0 })),

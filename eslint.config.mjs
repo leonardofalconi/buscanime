@@ -3,6 +3,7 @@ import pluginJs from '@eslint/js'
 import tseslint from 'typescript-eslint'
 import pluginReact from 'eslint-plugin-react'
 import eslintConfigPrettier from 'eslint-config-prettier'
+import pluginReactHooks from 'eslint-plugin-react-hooks'
 
 export default [
   pluginJs.configs.recommended,
@@ -19,6 +20,9 @@ export default [
         ...globals.jest,
         ...globals.es2024,
       },
+    },
+    plugins: {
+      'react-hooks': pluginReactHooks,
     },
     files: ['**/*.{ts,tsx}'],
     settings: {
@@ -45,6 +49,7 @@ export default [
       'react/jsx-uses-react': 'off',
       'react/react-in-jsx-scope': 'off',
       'react/jsx-filename-extension': [1, { extensions: ['.ts', '.tsx'] }],
+      'react-hooks/exhaustive-deps': 'warn',
       '@typescript-eslint/no-var-requires': 0,
       'no-async-promise-executor': 'off',
       '@typescript-eslint/naming-convention': [
@@ -82,6 +87,9 @@ export default [
     },
   },
   {
-    ignores: ['src/stories/*'],
+    files: ['src/stories/*'],
+    rules: {
+      '@typescript-eslint/naming-convention': 'off',
+    },
   },
 ]
