@@ -8,7 +8,7 @@ const Component: FC<ICategoriesFilterProps> = ({ categories, onChange, value, di
   const categoryOnSelected = (params: TCategoriesFilterItem) => onChange({ name: params.name })
 
   return (
-    <Styled.Container>
+    <Styled.Container data-testid="test-categories">
       {categories.map(category => (
         <PrimaryButton
           key={category.name}

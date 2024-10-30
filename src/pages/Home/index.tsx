@@ -58,11 +58,11 @@ export const Home = () => {
       </Styled.BoxFormSearch>
 
       {mediasState.mediasLoading && !mediasState.mediasPaginationLoading ? (
-        <Styled.LoadingWindowSvg src={loadingWindowSvg} />
+        <Styled.LoadingWindowSvg data-testid="test-home-loading-window" src={loadingWindowSvg} />
       ) : (
         <Styled.Medias>
           {mediasState.mediasNotFound ? (
-            <Styled.NoMediaFoundText>
+            <Styled.NoMediaFoundText data-testid="test-home-medias-not-found">
               {mediasState.mediasError ? MEDIAS_FEEDBACK_ERROR_MESSAGE : MEDIAS_FEEDBACK_NOT_FOUND_MESSAGE}
             </Styled.NoMediaFoundText>
           ) : (
@@ -83,7 +83,7 @@ export const Home = () => {
       )}
 
       {homeStates.isPaginationButtonVisible && (
-        <Styled.BoxSeeMoreButton>
+        <Styled.BoxSeeMoreButton data-testid="test-home-box-pagination">
           <PrimaryButton
             backgroundColor={Theme.colors.selectiveYellow}
             textColor={Theme.colors.white}
@@ -95,7 +95,7 @@ export const Home = () => {
             disabled={homeStates.isActionsDisable}
           >
             {mediasState.mediasPaginationLoading ? (
-              <Styled.LoadingDotsSvg src={loadingDotsSvg} />
+              <Styled.LoadingDotsSvg data-testid="test-home-loading-dots" src={loadingDotsSvg} />
             ) : (
               <Styled.SeeMoreButtonText>
                 <Styled.SeeMoreButtonIcon>+</Styled.SeeMoreButtonIcon>Ver mais

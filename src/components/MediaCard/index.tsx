@@ -9,7 +9,7 @@ const Component: FC<IMediaCardProps> = ({ averageScore, categoryTags, thumbnail,
   const tagAverageScoreColor = useMemo(() => getMediaAverageScoreTagColor({ averageScore }), [averageScore])
 
   return (
-    <Styled.Container>
+    <Styled.Container data-testid="test-media-card">
       <Styled.Content>
         <Styled.Title data-testid="test-media-card-title">{title}</Styled.Title>
         <Styled.BoxCategories data-testid="test-media-card-box-categories-score">
