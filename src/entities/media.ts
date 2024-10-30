@@ -2,6 +2,8 @@ export type TCategoriesLabels = 'Tv Show' | 'Movie' | 'Tv Short' | 'Special' | '
 
 export type TCategoriesNames = 'TV' | 'MOVIE' | 'TV_SHORT' | 'SPECIAL' | 'OVA' | 'ONA' | 'MUSIC'
 
+export type TMediasSortTypes = 'POPULARITY_DESC'
+
 export interface IMedia {
   id: number
   title: {

@@ -1,12 +1,10 @@
 import { ApolloError } from '@apollo/client'
-import { IMedia, TCategoriesNames } from '../../entities/media'
-
-export type TMediasQueryFiltersSortTypes = 'POPULARITY_DESC'
+import { IMedia, TCategoriesNames, TMediasSortTypes } from '../../entities/media'
 
 export type TMediasQueryFilters = {
   page: number
   perPage: number
-  sort?: TMediasQueryFiltersSortTypes
+  sort?: TMediasSortTypes
   format?: TCategoriesNames
   search?: string
 }
@@ -31,6 +29,7 @@ export interface IUseMediasReturn {
   mediasCurrentPagination: { page: number; perPage: number; hasNextPage: boolean }
   mediasCurrentFilters: { category?: TCategoriesNames; title?: string }
   medias?: IMedia[]
+  mediasNotFound: boolean
   getMediasNextPage: (params: TUseMediasGetMediasNextPageParams) => void
   setMediasFilters: (params: TUseMediasSetMediasFiltersParams) => void
 }

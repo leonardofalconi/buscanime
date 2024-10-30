@@ -1,96 +1,48 @@
 import { Theme } from '../../theme'
 import { PrimaryButton } from '../../components/PrimaryButton'
 import { CategoriesFilter } from '../../components/CategoriesFilter'
-import { TCategoriesFilterOnChangeParams } from '../../components/CategoriesFilter/types'
 import { MediaCard } from '../../components/MediaCard'
 import { Form } from '../../components/Form'
 import { Input } from '../../components/Form/Input'
 import {
-  categoriesList,
+  CATEGORIES_LIST,
   MEDIAS_FEEDBACK_ERROR_MESSAGE,
   MEDIAS_FEEDBACK_NOT_FOUND_MESSAGE,
   MEDIAS_INITIAL_STATES,
 } from './constants'
 import * as Styled from './styles'
 import { useMedias } from '../../hooks/useMedias'
-import { useCallback, useMemo } from 'react'
+import { useHomeStates } from './useHomeStates'
 import loadingDotsSvg from '../../assets/svgs/loadingDots.svg'
 import loadingWindowSvg from '../../assets/svgs/loadingWindow.svg'
 
 export const Home = () => {
-  const {
-    medias,
-    mediasLoading,
-    mediasPaginationLoading,
-    mediasCalled,
-    mediasError,
-    mediasCurrentFilters,
-    mediasCurrentPagination,
-    getMediasNextPage,
-    setMediasFilters,
-  } = useMedias(MEDIAS_INITIAL_STATES)
+  const mediasState = useMedias(MEDIAS_INITIAL_STATES)
 
-  const noMediaFound = useMemo(
-    () => !medias?.length && mediasCalled && !mediasLoading,
-    [medias, mediasCalled, mediasLoading],
-  )
-
-  const isActionsDisable = useMemo(
-    () => mediasPaginationLoading || mediasLoading,
-    [mediasPaginationLoading || mediasLoading],
-  )
-
-  const isPaginationButtonVisible = useMemo(
-    () => (!mediasLoading || mediasPaginationLoading) && !noMediaFound && mediasCurrentPagination.hasNextPage,
-    [mediasLoading, mediasPaginationLoading, noMediaFound, mediasCurrentPagination.hasNextPage],
-  )
-
-  const onCategoriesFilterChange = useCallback(
-    (params: TCategoriesFilterOnChangeParams) => {
-      const categoryToFilter = params.name !== 'ALL_FORMATS' ? params.name : undefined
-
-      if (isActionsDisable || mediasCurrentFilters.category === categoryToFilter) return
-
-      setMediasFilters({ format: categoryToFilter })
-    },
-    [isActionsDisable, mediasCurrentFilters.category],
-  )
-
-  const onFormSearchSubmit = useCallback(
-    (event: React.FormEvent<HTMLFormElement>) => {
-      const form = new FormData(event.currentTarget)
-      const inputSearchElement = event.currentTarget.search
-      const inputSearchValue = form.get('search')?.toString().trim() || undefined
-
-      if (isActionsDisable || mediasCurrentFilters.title === inputSearchValue) return
-
-      inputSearchElement.blur()
-
-      setMediasFilters({ search: inputSearchValue || undefined })
-    },
-    [isActionsDisable, mediasCurrentFilters.title],
-  )
-
-  const onPaginationButtonClick = useCallback(() => {
-    if (isActionsDisable) return
-
-    getMediasNextPage({ page: mediasCurrentPagination.page + 1 })
-  }, [isActionsDisable, mediasCurrentPagination.page])
+  const homeStates = useHomeStates({
+    getMediasNextPage: mediasState.getMediasNextPage,
+    setMediasFilters: mediasState.setMediasFilters,
+    mediasCurrentFilters: mediasState.mediasCurrentFilters,
+    mediasCurrentPagination: mediasState.mediasCurrentPagination,
+    mediasLoading: mediasState.mediasLoading,
+    mediasPaginationLoading: mediasState.mediasPaginationLoading,
+    mediasNotFound: mediasState.mediasNotFound,
+  })
 
   return (
     <Styled.Container>
       <Styled.BoxFilterByCategories>
         <CategoriesFilter
-          disabled={isActionsDisable}
-          categories={categoriesList}
-          onChange={onCategoriesFilterChange}
-          value={mediasCurrentFilters.category || 'ALL_FORMATS'}
+          disabled={homeStates.isActionsDisable}
+          categories={CATEGORIES_LIST}
+          onChange={homeStates.onCategoriesFilterChange}
+          value={mediasState.mediasCurrentFilters.category || 'ALL_FORMATS'}
         />
       </Styled.BoxFilterByCategories>
 
       <Styled.BoxFormSearch>
-        <Form onSubmit={onFormSearchSubmit}>
-          <Input name="search" placeholder="Digite algo aqui..." disabled={isActionsDisable} />
+        <Form onSubmit={homeStates.onFormSearchSubmit}>
+          <Input name="search" placeholder="Digite algo aqui..." disabled={homeStates.isActionsDisable} />
           <PrimaryButton
             backgroundColor={Theme.colors.grape}
             textColor={Theme.colors.white}
@@ -98,24 +50,24 @@ export const Home = () => {
             height="1.9rem"
             fontSize="0.7rem"
             borderRadius="4px"
-            disabled={isActionsDisable}
+            disabled={homeStates.isActionsDisable}
           >
             Buscar
           </PrimaryButton>
         </Form>
       </Styled.BoxFormSearch>
 
-      {mediasLoading && !mediasPaginationLoading ? (
+      {mediasState.mediasLoading && !mediasState.mediasPaginationLoading ? (
         <Styled.LoadingWindowSvg src={loadingWindowSvg} />
       ) : (
         <Styled.Medias>
-          {noMediaFound ? (
+          {mediasState.mediasNotFound ? (
             <Styled.NoMediaFoundText>
-              {mediasError ? MEDIAS_FEEDBACK_ERROR_MESSAGE : MEDIAS_FEEDBACK_NOT_FOUND_MESSAGE}
+              {mediasState.mediasError ? MEDIAS_FEEDBACK_ERROR_MESSAGE : MEDIAS_FEEDBACK_NOT_FOUND_MESSAGE}
             </Styled.NoMediaFoundText>
           ) : (
             <Styled.MediaList>
-              {medias?.map(media => (
+              {mediasState.medias?.map(media => (
                 <Styled.MediaListItem key={media.id}>
                   <MediaCard
                     averageScore={media.averageScore}
@@ -130,7 +82,7 @@ export const Home = () => {
         </Styled.Medias>
       )}
 
-      {isPaginationButtonVisible && (
+      {homeStates.isPaginationButtonVisible && (
         <Styled.BoxSeeMoreButton>
           <PrimaryButton
             backgroundColor={Theme.colors.selectiveYellow}
@@ -139,10 +91,10 @@ export const Home = () => {
             height="2.4rem"
             fontSize="1rem"
             borderRadius="8px"
-            onClick={onPaginationButtonClick}
-            disabled={isActionsDisable}
+            onClick={homeStates.onPaginationButtonClick}
+            disabled={homeStates.isActionsDisable}
           >
-            {mediasPaginationLoading ? (
+            {mediasState.mediasPaginationLoading ? (
               <Styled.LoadingDotsSvg src={loadingDotsSvg} />
             ) : (
               <Styled.SeeMoreButtonText>

@@ -1,3 +1,4 @@
+import { useCallback, useMemo, useState } from 'react'
 import { NetworkStatus, useQuery } from '@apollo/client'
 import { GET_MEDIAS } from '../../graphql/medias'
 import {
@@ -8,7 +9,6 @@ import {
   TUseMediasGetMediasNextPageParams,
   TUseMediasCurrentPagination,
 } from './types'
-import { useCallback, useMemo, useState } from 'react'
 import { IMedia } from '../../entities/media'
 
 export const useMedias = (INITIAL_STATES: TMediasQueryFilters): IUseMediasReturn => {
@@ -28,6 +28,11 @@ export const useMedias = (INITIAL_STATES: TMediasQueryFilters): IUseMediasReturn
   const hasNextPage = useMemo(
     () => data?.Page.media.length === INITIAL_STATES.perPage * mediasCurrentPagination.page,
     [data, mediasCurrentPagination],
+  )
+
+  const noMediaFound = useMemo(
+    () => !data?.Page.media?.length && called && !loading,
+    [data?.Page.media, called, loading],
   )
 
   const getNextPage = useCallback(async (params: TUseMediasGetMediasNextPageParams) => {
@@ -64,6 +69,7 @@ export const useMedias = (INITIAL_STATES: TMediasQueryFilters): IUseMediasReturn
     mediasCurrentPagination: { ...mediasCurrentPagination, hasNextPage },
     mediasCurrentFilters: { category: variables?.format, title: variables?.search },
     medias: data?.Page.media ? getFormattedMedias(data?.Page.media) : [],
+    mediasNotFound: noMediaFound,
     getMediasNextPage: getNextPage,
     setMediasFilters: setFilters,
   }

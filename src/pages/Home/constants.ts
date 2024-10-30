@@ -13,7 +13,7 @@ export const MEDIAS_FEEDBACK_NOT_FOUND_MESSAGE =
 export const MEDIAS_FEEDBACK_ERROR_MESSAGE =
   'Ops! Algo deu errado ao tentar realizar sua busca. Por favor, tente novamente em alguns minutos.'
 
-export const categoriesList: TCategoriesFilterItem[] = [
+export const CATEGORIES_LIST: TCategoriesFilterItem[] = [
   {
     label: 'All Formats',
     name: 'ALL_FORMATS',
