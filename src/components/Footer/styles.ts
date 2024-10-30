@@ -7,7 +7,7 @@ const FooterFontBase = css`
   text-transform: uppercase;
 `
 
-export const Container = styled.div<TFooterStyledContainer>`
+export const Container = styled.footer<TFooterStyledContainer>`
   display: flex;
   flex-direction: column;
   align-items: center;

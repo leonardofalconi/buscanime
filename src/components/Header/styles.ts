@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { THeaderStyledContainer } from './types'
 
-export const Container = styled.div<THeaderStyledContainer>`
+export const Container = styled.header<THeaderStyledContainer>`
   display: flex;
   align-items: center;
   justify-content: center;
