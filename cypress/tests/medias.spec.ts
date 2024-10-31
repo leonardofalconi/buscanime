@@ -181,8 +181,6 @@ describe('Medias', () => {
     })
 
     it('Displaying an error message', () => {
-      cy.intercept('POST', '**/search?query=cypress', { statusCode: 500 }).as('getServerFailure')
-
       checkElementInTheDocument('[data-testid="test-home-medias-not-found"]', true)
 
       cy.get('[data-testid="test-home-medias-not-found"]').should(
